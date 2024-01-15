@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Juego de Adivinar el Número</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://images7.alphacoders.com/133/1332041.png'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #container {
+            text-align: center;
+            background-color: rgba(3, 61, 99, 0.651);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #ffffff;
+        }
+        p {
+            color: #ffffff;
+        }
+        input {
+            padding: 5px;
+            font-size: 14px;
+        }
+        button {
+            padding: 6.3px 15px;
+            font-size: 16px;
+            background-color: #00b7ff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #003e81;
+        }
+        #mensaje {
+            color: #009900;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(3, 61, 99, 0.651);
+            color: #fff;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            font-size: 11px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Bienvenido al juego de adivinar el número</h1>
+        <p>Estoy pensando en un número entre 1 y 100.</p>
+
+        <input type="text" id="adivinanza" placeholder="Tu adivinanza">
+        <button onclick="verificarAdivinanza()">Adivinar</button>
+
+        <p id="mensaje"></p>
+    </div>
+
+    <footer>
+        &copy; 2023 Ashly Umanzor. Todos los derechos reservados.
+    </footer>
+
+    <script>
+        var numeroSecreto = Math.floor(Math.random() * 100) + 1;
+        var intentos = 0;
+
+        function verificarAdivinanza() {
+            var adivinanza = parseInt(document.getElementById("adivinanza").value);
+            intentos++;
+
+            if (adivinanza < numeroSecreto) {
+                document.getElementById("mensaje").innerHTML = "Muy bajo. Intenta de nuevo.";
+            } else if (adivinanza > numeroSecreto) {
+                document.getElementById("mensaje").innerHTML = "Muy alto. Intenta de nuevo.";
+            } else {
+                document.getElementById("mensaje").innerHTML = "¡Felicitaciones! Adivinaste el número en " + intentos + " intentos.";
+                document.getElementById("adivinanza").disabled = true;
+            }
+        }
+    </script>
+</body>
+</html> 
